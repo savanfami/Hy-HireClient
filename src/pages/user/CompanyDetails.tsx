@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
@@ -6,7 +6,6 @@ import LocationOn from '@mui/icons-material/LocationOn';
 import axios from 'axios';
 import { URL } from '../../common/axiosInstance';
 import { config } from '../../common/configurations';
-
 export const CompanyDetail = () => {
   
   const { id } = useParams()
