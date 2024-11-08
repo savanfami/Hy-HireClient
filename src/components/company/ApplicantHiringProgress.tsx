@@ -16,6 +16,7 @@ export const ApplicantHiringProgress: React.FC<IApplicantProfileProps> = ({ user
   const navigate = useNavigate()
   const { applicantDetails } = useSelector((state: RootState) => state?.job)
   const applicantData = applicantDetails.find((data) => data.userDetails._id === userId)
+  console.log(applicantData)
   const [interviewDate, setInterviewDate] = useState<Date | null>(null);
   const [interviewTime, setInterviewTime] = useState<string>('');
   const dispatch: AppDispatch = useDispatch()
@@ -167,7 +168,7 @@ export const ApplicantHiringProgress: React.FC<IApplicantProfileProps> = ({ user
                 {error && <p className="text-red-600 text-sm mt-2 mb-2">{error}</p>}
               </div>
             }
-            {applicantData?.schedule?.reschedule?.status === RescheduleStatus.Requested ? (
+            {applicantData?.reschedule?.status === RescheduleStatus.Requested ? (
               <div>
                 <p className='p-2   bg-maincolr text-white border border-1px-solid rounded-md font-medium mb-2'>Reschedule Requested</p>
               </div>

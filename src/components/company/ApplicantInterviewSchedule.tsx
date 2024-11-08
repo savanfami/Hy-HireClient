@@ -27,6 +27,9 @@ export const ApplicantInterviewSchedule: React.FC<IApplicantProfileProps> = ({ u
     }
   });
   const navigate = useNavigate();
+  const updateInterviewSchedule = (updatedSchedule: InterviewSchedule) => {
+    setInterviewSchedule(updatedSchedule);
+  };
   const applicantData = applicantDetails.find((data) => data.userDetails._id === userId);
   const id = applicantData?._id;
   const fetchInterviewStatus = async () => {
@@ -140,9 +143,9 @@ export const ApplicantInterviewSchedule: React.FC<IApplicantProfileProps> = ({ u
               </div>
             </CardContent>
           </Card>
-          {interviewSchedule?.reschedule &&
+          {interviewSchedule?.reschedule?.reason &&
             <>
-              <InterviewReschedule interviewSchedules={interviewSchedule} />
+              <InterviewReschedule interviewSchedules={interviewSchedule} onUpdate={updateInterviewSchedule}/>
             </>
           }
           <div>

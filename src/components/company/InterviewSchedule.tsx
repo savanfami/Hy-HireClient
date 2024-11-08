@@ -9,9 +9,10 @@ import { formateDatetoThree } from '../../utils/common/formatDate';
 
 interface InterviewScheduleData {
   interviewSchedules: InterviewSchedule;
+  onUpdate: (updatedSchedule: InterviewSchedule) => void;
 }
 
-export const InterviewReschedule: React.FC<InterviewScheduleData> = ({ interviewSchedules }) => {
+export const InterviewReschedule: React.FC<InterviewScheduleData> = ({ interviewSchedules ,onUpdate}) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -33,30 +34,55 @@ export const InterviewReschedule: React.FC<InterviewScheduleData> = ({ interview
   };
 
   const handleDateTimeSubmit = async (status: string) => {
-    if (status === 'approved') {
-      if (!selectedDate || !selectedTime) {
-        setError('Please select a reschedule date and time before proceeding');
-        return;
-      }
-      try {
-        await axios.patch(`${URL}/job/updatereschedule`, {
+    try {
+      let updatedSchedule: InterviewSchedule;
+      let response;
+      if (status === 'approved') {
+        if (!selectedDate || !selectedTime) {
+          setError('Please select a reschedule date and time before proceeding');
+          return;
+        }
+        response = await axios.patch(`${URL}/job/updatereschedule`, {
           id: interviewSchedules._id,
           newDate: selectedDate,
           newTime: selectedTime,
-          status: status
+          status: status,
         }, config);
-      } catch (error) {
-        console.error('Error rescheduling interview:', error);
-      }
-    } else if (status === 'rejected') {
-      try {
-        await axios.patch(`${URL}/job/updatereschedule`, {
+        if (response.data) {
+          updatedSchedule = {
+            ...interviewSchedules,
+            schedule: {
+              ...interviewSchedules.schedule,
+              interviewDate: selectedDate.toISOString(),
+              interviewTime: selectedTime,
+            },
+            reschedule: {
+              ...interviewSchedules.reschedule,
+              status: 'approved',
+            },
+          };
+          onUpdate(updatedSchedule);
+        }
+      } else if (status === 'rejected') {
+        response = await axios.patch(`${URL}/job/updatereschedule`, {
           id: interviewSchedules._id,
-          status: status
+          status: status,
         }, config);
-      } catch (error) {
-        console.error('Error rejecting interview:', error);
+        if (response.data) {
+          updatedSchedule = {
+            ...interviewSchedules,
+            reschedule: {
+              ...interviewSchedules.reschedule,
+              status: 'rejected',
+            },
+          };
+          onUpdate(updatedSchedule);
+        }
+      } else {
+        return;
       }
+    } catch (error) {
+      console.error('Error updating interview schedule:', error);
     }
   };
 

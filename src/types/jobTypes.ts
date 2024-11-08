@@ -127,10 +127,10 @@ export interface IApplicantDetails {
       interviewTime?:string;
       status:string;
       roomId?:string;
-      reschedule:{
-        reason?:string;
-        status?:RescheduleStatus;
-      }
+    };
+    reschedule:{
+      reason?:string;
+      status?:RescheduleStatus;
     }
     userDetails: IUserDetails;
   }
