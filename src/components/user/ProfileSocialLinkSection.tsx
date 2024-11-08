@@ -42,8 +42,8 @@ export const ProfileSocialLinkSection: React.FC = () => {
   const handleBlur = (
     event: React.FocusEvent<HTMLInputElement>,
     values: FormikValues,
-    validateField: (field: string) => Promise<void>,
-    setFieldTouched: (field: string, isTouched?: boolean, shouldValidate?: boolean) => void
+    validateField: (field: string) => any,
+    setFieldTouched: (field: string, isTouched?: boolean, shouldValidate?: boolean) => any
   ) => {
     const { name } = event.target;
     setFieldTouched(name, true, false);
