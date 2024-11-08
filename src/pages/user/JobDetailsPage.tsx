@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { JobCard } from '../../components/user/JobCard'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +10,6 @@ import { applyJob } from '../../redux/action/jobAction'
 import { IApplyJobPayload } from '../../types/jobTypes'
 
 const JobDetailsPage = () => {
-    const mainRef = useRef<any>()
     const { id } = useParams()
     const { jobs } = useSelector((state: RootState) => state?.job)
     console.log(jobs)
@@ -46,9 +45,7 @@ const JobDetailsPage = () => {
     //   };
 
     useEffect(() => {
-        mainRef.current?.scrollIntoView({
-            behavior: "smooth"
-        });
+        window.scroll(0,0)
     }, [])
     const applyForJob = async () => {
         try {
@@ -158,7 +155,7 @@ const JobDetailsPage = () => {
                 </AlertDialog>
             )}
 
-            <div ref={mainRef} className='mx-10 mt-5'>
+            <div  className='mx-10 mt-5'>
                 <JobCard job={findJobById} value='Apply' onApply={handleApplyButtonClick} />
 
                 {/* Job Description and Details */}
