@@ -19,12 +19,12 @@ export const CompanyListing = () => {
   }, [dispatch]);
 
   const state = useSelector((state: RootState) => state?.admin);
+  console.log(state,'state')
 
-
-  const findApprovedCompany = state.request.filter((company) => company.companyId.approvalStatus === 'Approved');
-
+  const findApprovedCompany = state?.request?.filter((company) => company?.companyId?.approvalStatus === 'Approved');
+  console.log(findApprovedCompany,'find approved company')
   
-  const filteredCompanies = findApprovedCompany.filter((company) =>
+  const filteredCompanies = findApprovedCompany?.filter((company) =>
     company.companyId.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     company.companyId.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
