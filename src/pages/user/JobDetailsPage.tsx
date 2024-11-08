@@ -112,7 +112,7 @@ const JobDetailsPage = () => {
                                 Please select one of your resumes to apply for this job.
                             </AlertDialogDescription>
                         </AlertDialogHeader>
-                        <div ref={mainRef} className='p-4 max-h-[60vh] overflow-y-auto'>
+                        <div  className='p-4 max-h-[60vh] overflow-y-auto'>
                             {user.data?.resumes?.length > 0 ? (
                                 <ul className='space-y-6'>
                                     {user.data.resumes.map((resumeUrl: string, index: number) => (
@@ -158,7 +158,7 @@ const JobDetailsPage = () => {
                 </AlertDialog>
             )}
 
-            <div className='mx-10 mt-5'>
+            <div ref={mainRef} className='mx-10 mt-5'>
                 <JobCard job={findJobById} value='Apply' onApply={handleApplyButtonClick} />
 
                 {/* Job Description and Details */}
