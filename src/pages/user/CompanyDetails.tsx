@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../redux/store';
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { URL } from '../../common/axiosInstance';
 import { config } from '../../common/configurations';
 
 export const CompanyDetail = () => {
+  
   const { id } = useParams()
   const state = useSelector((state: RootState) => state?.user)
   const navigate = useNavigate()
@@ -45,7 +46,7 @@ export const CompanyDetail = () => {
     <>
       {
         companyDetails &&
-        <div className="container mx-auto px-4 py-8 ml-0">
+        <div  className="container mx-auto px-4 py-8 ml-0">
           <div className="flex flex-col md:flex-row items-center gap-6 mt-10">
             <img
               loading="lazy"

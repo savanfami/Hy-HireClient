@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { JobCard } from '../../components/user/JobCard'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +10,7 @@ import { applyJob } from '../../redux/action/jobAction'
 import { IApplyJobPayload } from '../../types/jobTypes'
 
 const JobDetailsPage = () => {
+    const mainRef = useRef<any>()
     const { id } = useParams()
     const { jobs } = useSelector((state: RootState) => state?.job)
     console.log(jobs)
@@ -23,7 +24,7 @@ const JobDetailsPage = () => {
     const isLoggedIn = !!user?.data
 
     const findJobById = jobs?.jobsWithDetails?.find((job: any) => job?._id === id)
-  console.log(findJobById)
+    console.log(findJobById)
     const handleResumeSelection = (resumeUrl: string) => {
         setSelectedResume(resumeUrl);
     };
@@ -44,7 +45,11 @@ const JobDetailsPage = () => {
     //     navigate(`/jobDetails/${jobId}`);
     //   };
 
-
+    useEffect(() => {
+        mainRef.current?.scrollIntoView({
+            behavior: "smooth"
+        });
+    }, [])
     const applyForJob = async () => {
         try {
             // if (!isLoggedIn) {
@@ -107,7 +112,7 @@ const JobDetailsPage = () => {
                                 Please select one of your resumes to apply for this job.
                             </AlertDialogDescription>
                         </AlertDialogHeader>
-                        <div className='p-4 max-h-[60vh] overflow-y-auto'>
+                        <div ref={mainRef} className='p-4 max-h-[60vh] overflow-y-auto'>
                             {user.data?.resumes?.length > 0 ? (
                                 <ul className='space-y-6'>
                                     {user.data.resumes.map((resumeUrl: string, index: number) => (
