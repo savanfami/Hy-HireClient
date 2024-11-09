@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+pimport React, { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -84,7 +84,7 @@ const Navbar = React.memo(() => {
             <NavLink to='' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Home</NavLink>
             <NavLink to="joblisting" className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Find jobs</NavLink>
             <NavLink to='companyListing' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Browse Companies</NavLink>
-            <NavLink to='' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Contact Us</NavLink>
+            <p className='block px-3 py-2 text-gray-500 hover:text-black'>Contact Us</p>
           </div>
 
           <div className='hidden md:flex font-serif'>
@@ -129,7 +129,7 @@ const Navbar = React.memo(() => {
             <NavLink to='' className='block px-3 py-2 text-gray-500 hover:text-black'>Home</NavLink>
             <NavLink to="joblisting" className='block px-3 py-2 text-gray-500 hover:text-black'>Find jobs</NavLink>
             <NavLink to="companyListing" className='block px-3 py-2 text-gray-500 hover:text-black'>Browse Companies</NavLink>
-            <NavLink to="" className='block px-3 py-2 text-gray-500 hover:text-black'>Contact Us</NavLink>
+            <p  className='block px-3 py-2 text-gray-500 hover:text-black'>Contact Us</p>
             {state && state?.role === 'user' ? (
             <>
               {isSubscribed ? (
