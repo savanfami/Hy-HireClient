@@ -93,7 +93,7 @@ export const ApplicantHiringProgress: React.FC<IApplicantProfileProps> = ({ user
 
   if (socket?.connected) {
     socket.on('room-created', (roomId) => {
-      setRoomId(`localhost:5173/call/${roomId}`)
+      setRoomId(`https://hy-hire.vercel.app/call/${roomId}`)
     })
   }
 

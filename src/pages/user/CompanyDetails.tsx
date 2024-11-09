@@ -24,6 +24,7 @@ export const CompanyDetail = () => {
   }
 
   useEffect(() => {
+    window.scroll(0,0)
     if (state?.user !== null) {
       checkSubscriptionStatus()
     }
