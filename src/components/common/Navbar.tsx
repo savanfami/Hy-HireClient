@@ -84,7 +84,7 @@ const Navbar = React.memo(() => {
             <NavLink to='' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Home</NavLink>
             <NavLink to="joblisting" className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Find jobs</NavLink>
             <NavLink to='companyListing' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Browse Companies</NavLink>
-            <NavLink to='contact' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Contact Us</NavLink>
+            <NavLink to='' className={({ isActive }) => isActive ? 'text-black underline px-3 py-2' : 'block px-3 py-2 text-gray-500 hover:text-black'}>Contact Us</NavLink>
           </div>
 
           <div className='hidden md:flex font-serif'>
@@ -129,7 +129,7 @@ const Navbar = React.memo(() => {
             <NavLink to='' className='block px-3 py-2 text-gray-500 hover:text-black'>Home</NavLink>
             <NavLink to="joblisting" className='block px-3 py-2 text-gray-500 hover:text-black'>Find jobs</NavLink>
             <NavLink to="companyListing" className='block px-3 py-2 text-gray-500 hover:text-black'>Browse Companies</NavLink>
-            <NavLink to="contact" className='block px-3 py-2 text-gray-500 hover:text-black'>Contact Us</NavLink>
+            <NavLink to="" className='block px-3 py-2 text-gray-500 hover:text-black'>Contact Us</NavLink>
             {state && state?.role === 'user' ? (
             <>
               {isSubscribed ? (
