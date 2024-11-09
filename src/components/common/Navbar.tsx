@@ -1,4 +1,4 @@
-pimport React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
