@@ -154,6 +154,8 @@ export interface IgetUserInteviewSchedules{
   schedule:{
     interviewDate:Date;
     interviewTime:string;
+    roomId:string;
+    status:string;
   },
   reschedule:{
     status?:string;

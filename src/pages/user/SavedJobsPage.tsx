@@ -3,6 +3,9 @@ import { JobCard } from '../../components/user/JobCard'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import { PaginationSection } from '../../components/common/PaginationSection'
+import Lootie from 'lottie-react'
+import animation from '../../../src/assets/lottieFiles/Animation - 1728127355120.json'
+
 
 export const SavedJobs = () => {
   const state = useSelector((state: RootState) => state?.user)
@@ -21,7 +24,11 @@ export const SavedJobs = () => {
         ))
 
       ) : (
-        <p className='text-red-500 items-center font-semibold'>NO JOBS SAVED </p>
+        <div className='flex justify-center'>
+
+        <Lootie height={200}
+          width={200} animationData={animation} />
+      </div>
       )}
       {currentItems && currentItems.length>0 && 
       <PaginationSection currentPage={currentPage} setCurrentPage={setCurrentPage} itemPerPage={itemPerPage} totalJobs={totalJobs} />
